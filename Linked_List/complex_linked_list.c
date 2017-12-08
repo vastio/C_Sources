@@ -126,10 +126,31 @@ int pop(User *user, Nodo **head) {
 
 
 
+// Cerac per alias  
+int search(char *name, Nodo *head) {
+
+  Nodo *temp = head;
+  int found = 0;
+
+  while (temp != NULL) {
+
+    if (strncmp(name, temp->user->alias, 15) == 0) {
+      found = 1;
+      break;
+    }
+    temp = temp->next;
+  }
+  
+  return found;
+} /*-*/
+
+
+
 // MAIN
 int main(int argc, char *argv[]) {
 
     char ch;
+    char alias[15];
     Nodo *head = NULL;
 
 
@@ -155,6 +176,14 @@ int main(int argc, char *argv[]) {
 	  break;
 	case '2' :
 	  pop(add_new_user(), &head);
+	  break;
+	case '3' :
+	  printf("[=>] Inserisci alias da cercare: ");
+	  scanf("%15s", alias);
+	  if (search(alias, head))
+	    printf("[*_*] Alias trovato nella lista.\n");
+	  else
+	    printf("[*-*] Alias non presente nella lista.\n");
 	  break;
         case '6' :
 	  print_list(head);

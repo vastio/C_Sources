@@ -89,6 +89,43 @@ int push(User *user, Nodo **head) {
 } /*-*/
 
 
+// Aggiunge in coda alla lista un nuovo dato
+int pop(User *user, Nodo **head) {
+
+  Nodo *new_nodo, *temp;
+
+  // Allocaizone memoria nuovo nodo
+  if ((new_nodo = (struct Nodo*) malloc(sizeof(struct Nodo))) == NULL) {
+    printf("[!!] Errore allocazione memoria");
+    exit(EXIT_FAILURE);
+  }
+  
+  // Assegnazione dato
+  new_nodo->user = user;
+
+  // Sistemazione nodo in coda
+  if (head == NULL) { // Lista ancora vuota
+    new_nodo->next = *head;
+    *head = new_nodo;
+  }
+  else { // Lista con elementi
+
+    temp = *head;
+
+    // Scorrimento della lista fino alla fine
+    while (temp->next != NULL)
+      temp = temp->next;
+
+    // collocaizone nuovo nodo
+    new_nodo->next = NULL;
+    temp->next = new_nodo;
+  }
+  
+  return 1;
+} /*-*/
+
+
+
 // MAIN
 int main(int argc, char *argv[]) {
 
@@ -114,14 +151,17 @@ int main(int argc, char *argv[]) {
 
         switch (ch) {
         case '1' :
-            push(add_new_user(), &head);
-            break;
+	  push(add_new_user(), &head);
+	  break;
+	case '2' :
+	  pop(add_new_user(), &head);
+	  break;
         case '6' :
-            print_list(head);
-            break;
+	  print_list(head);
+	  break;
         case 'q' :
-            printf("\n\n[.. :) ..] Bye Bye...\n\n");
-            break;
+	  printf("\n\n[.. :) ..] Bye Bye...\n\n");
+	  break;
         }
     }
 

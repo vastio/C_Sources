@@ -81,8 +81,8 @@ int fcopy(const char *src, const char *dest) {
 			return -4;
 		}
 		
-		tot_write += n_write;
-		printf("[*] Copied %d bytes\r", tot_write);
+		tot_write += (n_write / 1024));
+		printf("%d kb\r", tot_write);
 	}
 	printf("\n");
 	

@@ -49,7 +49,46 @@ void print_usage(const char *prog_name) {
  */
 int fcopy(const char *src, const char *dest) {
 
+	FILE *src_fp, *dest_fp;
+	char buffer[BUFSIZ];
+	size_t n_read, n_write, tot_write = 0;
+
 	
+	// Apertura file sorgente
+	if ((src_fp = fopen(src, "r")) == NULL)
+		return -1;
+
+	// Apertura file destinazione
+	if ((dest_fp = fopen(dest, "w")) == NULL) {
+		fclose(src_fp);
+		return -2;
+	}
+
+	// Copia
+	while ((n_read = fread(buffer, 1, sizeof(buffer), src_fp)) > 0) {
+		if (!ferror(src_fp)) {
+			n_write = fwrite(buffer, 1, n_read, dest_fp);
+
+			if (ferror(dest_fp)) {
+				fclose(dest_fp);
+				fclose(src_fp);
+				return -3;
+			}
+		}
+		else {
+			fclose(dest_fp);
+			fclose(src_fp);
+			return -4;
+		}
+		
+		tot_write += n_write;
+		printf("[*] Copied %d bytes\r", tot_write);
+	}
+	printf("\n");
 	
-	return EXIT_SUCCESS;
+	// Chiusura file pointer
+	fclose(src_fp);
+	fclose(dest_fp);
+	
+	return 0;
 } /*-*/

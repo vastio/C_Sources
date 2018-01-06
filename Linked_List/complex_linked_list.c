@@ -9,12 +9,12 @@
 #include <string.h>
 
 
+
 // Definizione dato
 typedef struct User {
-    char alias[15];
-    int age;
+	char alias[15];
+	int age;
 } User;
-
 
 
 // Definizione nodo della lista
@@ -25,18 +25,17 @@ typedef struct Nodo {
 
 
 
-
 // Aggiunge un nuovo utente
 User *add_new_user(void) {
 
     User *user;
-
+	
     // Allocazione memoria
     if ((user = (struct User*) malloc(sizeof(struct User))) == NULL) {
         printf("[!!] Errore allocazione memoria");
         exit(EXIT_FAILURE);
     }
-
+	
     printf("\n[=>] Inserisci alias: ");
     scanf("%15s", user->alias);
     printf("\n[=>] Inserisci eta: ");

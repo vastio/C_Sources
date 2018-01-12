@@ -5,11 +5,12 @@
 #include "structs.h"
 
 
+
 /* empty()
  * Return 1 if stack is empty.
  * Return 0 if stack is NOT empty.
  */
-int empty(Nodo *head) {
+int stack_is_empty(Nodo *head) {
 	// Se head punta a NULL
 	// allora lo stack e vuoto
 	if (head == NULL)
@@ -47,4 +48,24 @@ int stack_push(Nodo **head, void *value, size_t d_size) {
 	*head = newnodo;
 	
 	return 1;
+} /*-*/
+
+
+
+/* stack_pop()
+ * Rimuove il primo elemento dello stack e lo ritorna.
+ * Ritorna NULL in caso di errore
+ */
+void *stack_pop(Nodo **head) {
+
+	Nodo *temp;
+	void *value;
+
+	temp = *head;
+	value = temp->data;
+	*head = temp->next;
+
+	free(temp);
+	
+	return value;
 } /*-*/

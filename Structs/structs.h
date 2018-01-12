@@ -19,7 +19,7 @@ typedef struct Nodo {
 
 
 // Prototipo funzioni dello stack
-int empty(Nodo *head);
+int stack_is_empty(Nodo *head);
 int stack_push(Nodo **head, void *value, size_t d_size);
 void *stack_pop(Nodo **head);
 void *stack_peek(Nodo *head);

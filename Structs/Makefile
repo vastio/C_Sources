@@ -7,7 +7,7 @@
 CC = gcc
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-TARGET = monitall
+TARGET = test
 DEBUG = yes
 CFLAGS = -Wall -O2 -Os
 INC = -I/usr/include

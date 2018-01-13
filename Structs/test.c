@@ -7,7 +7,7 @@
 #include <string.h>
 #include "structs.h"
 
-#define MAX_NUM 5
+#define MAX_NUM 6
 
 
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
 	Nodo *head = NULL;
 	int i;
-	char *word[MAX_NUM] = {"Casa", "Chiesa", "Cosa", "Ciao", "World"};
+	char *word[MAX_NUM] = {"Casa", "Chiesa", "Cosa", "Ciao", "World", "Mondo"};
 
 	for (i = 0; i < MAX_NUM; i++) {
 		if (stack_push(&head, word[i], sizeof(char) * strlen(word[i])) < 0) {
@@ -25,9 +25,11 @@ int main(int argc, char *argv[]) {
 			exit(EXIT_FAILURE);
 		}
 	}
+
+	printf("Elementi presenti nello stack: %d\n", stack_size());
 	
 	// Stampa della lista
-	while (!empty(head))
+	while (!stack_is_empty(head))
 		printf("%s ", (char *) stack_pop(&head));
 	printf("\n");
 	

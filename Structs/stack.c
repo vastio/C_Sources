@@ -5,6 +5,9 @@
 #include "structs.h"
 
 
+static int st_size;
+
+
 
 /* empty()
  * Return 1 if stack is empty.
@@ -46,6 +49,7 @@ int stack_push(Nodo **head, void *value, size_t d_size) {
 	// Sistemazione del nodo in testa alla lista
 	newnodo->next = *head;
 	*head = newnodo;
+	st_size++;
 	
 	return 1;
 } /*-*/
@@ -66,6 +70,17 @@ void *stack_pop(Nodo **head) {
 	*head = temp->next;
 
 	free(temp);
+	st_size--;
 	
 	return value;
+} /*-*/
+
+
+
+/* stack_size()
+ * Return size of stack:
+ * nums of elements in the stack
+ */
+int stack_size(void) {
+	return st_size;
 } /*-*/

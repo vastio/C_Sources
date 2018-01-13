@@ -34,7 +34,7 @@ int stack_size(void);
 /*
  * Prototipo funzioni della queue
  */
-int queue_is_empty(Nodo *head, Nodo *tail);
+int queue_is_empty(Nodo *head);
 int enqueue();
 void *dequeue();
 

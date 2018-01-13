@@ -9,7 +9,7 @@ static int st_size;
 
 
 
-/* empty()
+/* stack_is_empty()
  * Return 1 if stack is empty.
  * Return 0 if stack is NOT empty.
  */

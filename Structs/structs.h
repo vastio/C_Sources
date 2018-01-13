@@ -18,6 +18,7 @@ typedef struct Nodo {
 
 
 
+
 /*
  * Prototipo funzioni dello stack
  */
@@ -27,6 +28,7 @@ void *pop(Nodo **head);
 void *peek(Nodo *head);
 int stack_size(void);
 //int search(Nodo *head, void *data);
+
 
 
 /*

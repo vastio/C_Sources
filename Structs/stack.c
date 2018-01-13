@@ -24,7 +24,7 @@ int stack_is_empty(Nodo *head) {
 
 
 
-/* stack_push()
+/* push()
  * Inserisce un elemento in testa allo stack.
  * Return 1 se inserimnento OK.
  * Return valore < 0 se incontra un errore
@@ -56,7 +56,7 @@ int push(Nodo **head, void *value, size_t d_size) {
 
 
 
-/* stack_pop()
+/* pop()
  * Rimuove il primo elemento dello stack e lo ritorna.
  * Ritorna NULL in caso di errore
  */
@@ -73,6 +73,18 @@ void *pop(Nodo **head) {
 	st_size--;
 	
 	return value;
+} /*-*/
+
+
+
+/* peek()
+ * Ritorna il primo elemento dello stack
+ */
+void *peek(Nodo *head) {
+
+	Nodo *temp = head;
+
+	return temp->data;
 } /*-*/
 
 

@@ -29,7 +29,7 @@ int stack_is_empty(Nodo *head) {
  * Return 1 se inserimnento OK.
  * Return valore < 0 se incontra un errore
  */
-int stack_push(Nodo **head, void *value, size_t d_size) {
+int push(Nodo **head, void *value, size_t d_size) {
 
 	Nodo *newnodo;
 	int i;
@@ -60,7 +60,7 @@ int stack_push(Nodo **head, void *value, size_t d_size) {
  * Rimuove il primo elemento dello stack e lo ritorna.
  * Ritorna NULL in caso di errore
  */
-void *stack_pop(Nodo **head) {
+void *pop(Nodo **head) {
 
 	Nodo *temp;
 	void *value;
